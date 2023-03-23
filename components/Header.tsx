@@ -16,8 +16,7 @@ export default function Header() {
           src="https://links.papareact.com/qd3"
           fill
           alt="airbnb"
-          objectFit="contain"
-          objectPosition="left"
+          style={{ objectFit: "contain", objectPosition: "left" }}
         />
       </div>
       <div className="flex items-center md:border-2 rounded-full py-2 md:shadow-sm">
