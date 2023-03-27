@@ -6,6 +6,7 @@ import styles from "@/styles/Home.module.css";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import SmallCard from "@/components/SmallCard";
+import MediumCardComponent from "@/components/MediumCardComponent";
 
 export type ExploreDataItem = {
   img: string;
@@ -13,13 +14,17 @@ export type ExploreDataItem = {
   distance: string;
 };
 
-const inter = Inter({ subsets: ["latin"] });
-const fetcher = (url: URL) => fetch(url).then((res) => res.json());
+export type CardDataItem = {
+  img: string;
+  title: string;
+};
 
 export default function Home({
   exploreData,
+  cardsData,
 }: {
   exploreData: ExploreDataItem[];
+  cardsData: CardDataItem[];
 }) {
   return (
     <>
@@ -34,16 +39,22 @@ export default function Home({
         <section className="pt-6">
           <h2 className="text-4xl font-semibold pb-5">Explore Nearby</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {exploreData.map((item) => {
-              return (
-                <SmallCard
-                  key={item.location}
-                  img={item.img}
-                  distance={item.distance}
-                  location={item.location}
-                />
-              );
-            })}
+            {exploreData.map((item) => (
+              <SmallCard
+                key={item.location}
+                img={item.img}
+                distance={item.distance}
+                location={item.location}
+              />
+            ))}
+          </div>
+        </section>
+        <section>
+          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
+          <div className="flex space-x-3 overscroll-y-none scroll-x overflow-scroll scrollbar-hide scroll- p-3 -ml-3">
+            {cardsData.map(({ img, title }) => (
+              <MediumCardComponent key={title} img={img} title={title} />
+            ))}
           </div>
         </section>
       </main>
@@ -53,9 +64,11 @@ export default function Home({
 // next.js fn for server rendering
 export async function getStaticProps() {
   const exploreData: string = await getLocalData("exploreData");
+  const cardsData: string = await getLocalData("cardsData");
   return {
     props: {
       exploreData,
+      cardsData,
     },
   };
 }
