@@ -6,7 +6,7 @@ import styles from "@/styles/Home.module.css";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import SmallCard from "@/components/SmallCard";
-import MediumCardComponent from "@/components/MediumCardComponent";
+import MediumCard from "@/components/MediumCard";
 
 export type ExploreDataItem = {
   img: string;
@@ -55,7 +55,7 @@ export default function Home({
           scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-red-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full
           ">
             {cardsData.map(({ img, title }) => (
-              <MediumCardComponent key={title} img={img} title={title} />
+              <MediumCard key={title} img={img} title={title} />
             ))}
           </div>
         </section>
