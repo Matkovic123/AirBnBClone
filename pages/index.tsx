@@ -51,7 +51,9 @@ export default function Home({
         </section>
         <section>
           <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
-          <div className="flex space-x-3 overscroll-y-none scroll-x overflow-scroll scrollbar-hide scroll- p-3 -ml-3">
+          <div className="flex space-x-3 overflow-x-scroll p-3 -ml-3
+          scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-red-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full
+          ">
             {cardsData.map(({ img, title }) => (
               <MediumCardComponent key={title} img={img} title={title} />
             ))}
