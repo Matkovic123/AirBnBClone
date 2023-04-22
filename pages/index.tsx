@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import SmallCard from "@/components/SmallCard";
 import MediumCard from "@/components/MediumCard";
+import LargeCard from "@/components/LargeCard";
 
 export type ExploreDataItem = {
   img: string;
@@ -51,14 +52,22 @@ export default function Home({
         </section>
         <section>
           <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
-          <div className="flex space-x-3 overflow-x-scroll p-3 -ml-3
+          <div className="flex space-x-3 overflow-x-scroll p-3
           scrollbar-thin scrollbar-thumb-red-400 scrollbar-track-red-200 scrollbar-thumb-rounded-full scrollbar-track-rounded-full
           ">
             {cardsData.map(({ img, title }) => (
-              <MediumCard key={title} img={img} title={title} />
+              <div key={title} className="-ml-3">
+                <MediumCard  img={img} title={title} />
+              </div>
             ))}
           </div>
         </section>
+        <LargeCard
+          img="https://links.papareact.com/4cj"
+          title="The Greatest Outdoors"
+          description="Wishlist curated by Airbnb"
+          buttonText="Get Inspired"
+        />
       </main>
     </>
   );
